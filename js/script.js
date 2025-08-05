@@ -1,13 +1,30 @@
 
+// Dynamische Header-Höhe für Scroll-Offset
+function updateScrollPadding() {
+    const header = document.querySelector('.header');
+    if (header) {
+        const headerHeight = header.offsetHeight;
+        document.documentElement.style.setProperty('scroll-padding-top', headerHeight + 'px');
+    }
+}
+
+// Bei Seitenladen und Größenänderung aktualisieren
+window.addEventListener('load', updateScrollPadding);
+window.addEventListener('resize', updateScrollPadding);
+
 // Smooth Scrolling für Anker-Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const header = document.querySelector('.header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         }
     });
