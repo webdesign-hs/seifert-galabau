@@ -290,3 +290,151 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Lightbox Funktionalität
+function openLightbox(card) {
+    const lightbox = document.getElementById('lightbox');
+    const imageContainer = lightbox.querySelector('.lightbox-image-container');
+    const title = lightbox.querySelector('.lightbox-title');
+    const description = lightbox.querySelector('.lightbox-description');
+    const details = lightbox.querySelector('.lightbox-details');
+    
+    // Daten aus der Reference Card extrahieren
+    const cardTitle = card.querySelector('.reference-title').textContent;
+    const cardDescription = card.querySelector('.reference-description').textContent;
+    const cardCategory = card.querySelector('.reference-category').textContent;
+    const cardSize = card.querySelector('.reference-size')?.textContent || '';
+    const cardYear = card.querySelector('.reference-year')?.textContent || '';
+    
+    // Lightbox-Inhalt befüllen
+    title.textContent = cardTitle;
+    description.textContent = cardDescription;
+    details.innerHTML = `
+        <span>${cardCategory}</span>
+        ${cardSize ? `<span>${cardSize}</span>` : ''}
+        ${cardYear ? `<span>${cardYear}</span>` : ''}
+    `;
+    
+    // Bild oder Vorher-Nachher Container erstellen
+    if (card.classList.contains('before-after')) {
+        // Vorher-Nachher Slider
+        const originalContainer = card.querySelector('.before-after-container');
+        const beforeImg = originalContainer.querySelector('.before-image');
+        const afterImg = originalContainer.querySelector('.after-image');
+        
+        imageContainer.innerHTML = `
+            <div class="lightbox-before-after">
+                <div class="before-after-container">
+                    <img src="${beforeImg.src}" alt="${beforeImg.alt}" class="before-image">
+                    <img src="${afterImg.src}" alt="${afterImg.alt}" class="after-image">
+                    <div class="before-after-slider"></div>
+                    <div class="before-after-labels">
+                        <span class="before-label">Vorher</span>
+                        <span class="after-label">Nachher</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Slider im Lightbox initialisieren
+        setTimeout(() => {
+            initBeforeAfterSliders();
+        }, 100);
+    } else {
+        // Normales Bild oder Platzhalter
+        const placeholder = card.querySelector('.reference-placeholder');
+        if (placeholder) {
+            imageContainer.innerHTML = `
+                <div class="lightbox-placeholder">
+                    <div class="placeholder-content">${placeholder.textContent}</div>
+                </div>
+            `;
+        }
+    }
+    
+    // Lightbox anzeigen mit Fade-Animation
+    lightbox.style.display = 'flex';
+    setTimeout(() => {
+        lightbox.classList.add('active');
+    }, 10);
+    document.body.classList.add('modal-open');
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.classList.remove('modal-open');
+    
+    // Nach der Animation verstecken
+    setTimeout(() => {
+        lightbox.style.display = 'none';
+    }, 300);
+}
+
+// Gallery Lightbox für Index.html
+function openGalleryLightbox(galleryItem) {
+    const lightbox = document.getElementById('lightbox');
+    const imageContainer = lightbox.querySelector('.lightbox-image-container');
+    const title = lightbox.querySelector('.lightbox-title');
+    const description = lightbox.querySelector('.lightbox-description');
+    const details = lightbox.querySelector('.lightbox-details');
+    
+    // Daten aus dem Gallery Item extrahieren
+    const img = galleryItem.querySelector('img');
+    const caption = galleryItem.querySelector('.gallery-caption');
+    const captionTitle = caption.querySelector('h4').textContent;
+    const captionDescription = caption.querySelector('p').textContent;
+    
+    // Lightbox-Inhalt befüllen
+    title.textContent = captionTitle;
+    description.textContent = captionDescription;
+    details.innerHTML = '<span>Galerie</span>';
+    
+    // Bild in Lightbox anzeigen
+    imageContainer.innerHTML = `
+        <img src="${img.src}" alt="${img.alt}" class="lightbox-image">
+    `;
+    
+    // Lightbox anzeigen mit Fade-Animation
+    lightbox.style.display = 'flex';
+    setTimeout(() => {
+        lightbox.classList.add('active');
+    }, 10);
+    document.body.classList.add('modal-open');
+}
+
+// Event Listeners für Reference Cards und Gallery Items
+document.addEventListener('DOMContentLoaded', function() {
+    // Reference Cards (nur auf referenzen.html)
+    const referenceCards = document.querySelectorAll('.reference-card');
+    referenceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            openLightbox(this);
+        });
+    });
+    
+    // Gallery Items (auf index.html)
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            openGalleryLightbox(this);
+        });
+    });
+    
+    // Lightbox schließen bei Klick außerhalb
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+        
+        // ESC-Taste für Lightbox
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    }
+});
+
