@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+
 :root {
     /* Brand Identity Farben */
     --primary-white: #ffffff;
@@ -256,7 +257,6 @@ html {
 
 /* === MODAL/OVERLAY === */
 .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -266,12 +266,17 @@ html {
     z-index: 1000;
     padding: 2rem;
     box-sizing: border-box;
-}
-
-.modal.active {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal-content {
@@ -283,6 +288,8 @@ html {
     position: relative;
     overflow-y: auto;
     box-shadow: 0 20px 40px rgba(65, 70, 61, 0.3);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s ease;
 }
 
 .modal-header {
@@ -381,6 +388,11 @@ html {
 .modal-cta .cta-button:hover {
     background: var(--light-green);
     box-shadow: 0 6px 20px rgba(142, 176, 69, 0.4);
+}
+
+/* Modal Animation */
+.modal.active .modal-content {
+    transform: scale(1) translateY(0);
 }
 
 /* Body scroll lock */
@@ -634,6 +646,36 @@ body.modal-open {
     background: var(--secondary-green);
 }
 
+/* === CTA SECTION === */
+.cta {
+    background-color: var(--secondary-green);
+    padding: var(--section-padding);
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    color: var(--primary-white);
+    margin-bottom: 1rem;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    color: var(--primary-white);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta .cta-button {
+    background: var(--light-gray);
+    color: var(--dark-green);
+}
+
+.cta .cta-button:hover {
+    background: var(--primary-white);
+    color: var(--dark-green);
+}
+
 /* === FOOTER === */
 .footer {
     background: var(--dark-green);
@@ -729,9 +771,10 @@ body.modal-open {
 }
 
 .logo-img {
-    height: 40px;
+    height: 50px;
     width: auto;
     transition: transform 0.3s ease;
+    display: block;
 }
 
 .logo:hover .logo-img {
@@ -798,7 +841,7 @@ body.modal-open {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .reference-card {

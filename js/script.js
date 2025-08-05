@@ -20,7 +20,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             const header = document.querySelector('.header');
             const headerHeight = header ? header.offsetHeight : 0;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            const extraOffset = 0; // Zusätzlicher Abstand für bessere Sichtbarkeit
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
             
             window.scrollTo({
                 top: targetPosition,
@@ -31,11 +32,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Einfache Formular-Behandlung
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglichst bei Ihnen.');
-    this.reset();
-});
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglichst bei Ihnen.');
+        this.reset();
+    });
+}
 
 // Modal Funktionalität
 const serviceCards = document.querySelectorAll('.service-card[data-service]');
@@ -81,7 +85,7 @@ legalPages.forEach(page => {
     });
 });
 
-// Service Card Clicks & More Links
+// Service Card Clicks & More Links  
 serviceCards.forEach(card => {
     card.addEventListener('click', function(e) {
         // Prevent opening modal if clicking on the "more" link
@@ -161,7 +165,7 @@ document.querySelectorAll('.modal-cta .cta-button').forEach(button => {
         modal.classList.remove('active');
         body.classList.remove('modal-open');
         
-        // Scroll to contact section
+        // Scroll to contact section after modal closes
         setTimeout(() => {
             const contactSection = document.querySelector('#kontakt');
             if (contactSection) {
@@ -175,24 +179,26 @@ document.querySelectorAll('.modal-cta .cta-button').forEach(button => {
 });
 
 // Filter Funktionalität
-const filterTabs = document.querySelectorAll('.filter-tab');
-const referenceCards = document.querySelectorAll('.reference-card');
+document.addEventListener('DOMContentLoaded', function() {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const referenceCards = document.querySelectorAll('.reference-card');
 
-filterTabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-        const filter = this.getAttribute('data-filter');
-        
-        // Aktive Tab aktualisieren
-        filterTabs.forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Karten filtern
-        referenceCards.forEach(card => {
-            if (filter === 'alle' || card.getAttribute('data-category') === filter) {
-                card.classList.remove('hidden');
-            } else {
-                card.classList.add('hidden');
-            }
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Aktive Tab aktualisieren
+            filterTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Karten filtern
+            referenceCards.forEach(card => {
+                if (filter === 'alle' || card.getAttribute('data-category') === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
         });
     });
 });
@@ -275,8 +281,12 @@ function initBeforeAfterSliders() {
 document.addEventListener('DOMContentLoaded', initBeforeAfterSliders);
 
 // Re-initialize after filter changes (in case sliders were hidden/shown)
-filterTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        setTimeout(initBeforeAfterSliders, 100);
+document.addEventListener('DOMContentLoaded', function() {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            setTimeout(initBeforeAfterSliders, 100);
+        });
     });
 });
+
