@@ -47,43 +47,7 @@ const modals = document.querySelectorAll('.modal');
 const modalCloses = document.querySelectorAll('.modal-close');
 const body = document.body;
 
-// Legal Pages Funktionalität
-const legalLinks = document.querySelectorAll('.legal-link');
-const legalPages = document.querySelectorAll('.legal-page');
-const legalCloses = document.querySelectorAll('.legal-close');
-
-// Legal Page Links
-legalLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const pageId = this.getAttribute('href').substring(1);
-        const legalPage = document.getElementById(pageId);
-        
-        if (legalPage) {
-            legalPage.classList.add('active');
-            body.classList.add('modal-open');
-        }
-    });
-});
-
-// Legal Page Close Buttons
-legalCloses.forEach(closeBtn => {
-    closeBtn.addEventListener('click', function() {
-        const legalPage = this.closest('.legal-page');
-        legalPage.classList.remove('active');
-        body.classList.remove('modal-open');
-    });
-});
-
-// Click outside legal page to close
-legalPages.forEach(page => {
-    page.addEventListener('click', function(e) {
-        if (e.target === this) {
-            this.classList.remove('active');
-            body.classList.remove('modal-open');
-        }
-    });
-});
+// Legal Pages Funktionalität entfernt (Overlays aus index.html entfernt)
 
 // Service Card Clicks & More Links  
 serviceCards.forEach(card => {
@@ -294,25 +258,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function openLightbox(card) {
     const lightbox = document.getElementById('lightbox');
     const imageContainer = lightbox.querySelector('.lightbox-image-container');
-    const title = lightbox.querySelector('.lightbox-title');
-    const description = lightbox.querySelector('.lightbox-description');
-    const details = lightbox.querySelector('.lightbox-details');
+    const info = lightbox.querySelector('.lightbox-info');
     
-    // Daten aus der Reference Card extrahieren
-    const cardTitle = card.querySelector('.reference-title').textContent;
-    const cardDescription = card.querySelector('.reference-description').textContent;
-    const cardCategory = card.querySelector('.reference-category').textContent;
-    const cardSize = card.querySelector('.reference-size')?.textContent || '';
-    const cardYear = card.querySelector('.reference-year')?.textContent || '';
-    
-    // Lightbox-Inhalt befüllen
-    title.textContent = cardTitle;
-    description.textContent = cardDescription;
-    details.innerHTML = `
-        <span>${cardCategory}</span>
-        ${cardSize ? `<span>${cardSize}</span>` : ''}
-        ${cardYear ? `<span>${cardYear}</span>` : ''}
-    `;
+    // Info-Bereich verstecken für reines Bild
+    if (info) {
+        info.style.display = 'none';
+    }
     
     // Bild oder Vorher-Nachher Container erstellen
     if (card.classList.contains('before-after')) {
@@ -340,14 +291,22 @@ function openLightbox(card) {
             initBeforeAfterSliders();
         }, 100);
     } else {
-        // Normales Bild oder Platzhalter
-        const placeholder = card.querySelector('.reference-placeholder');
-        if (placeholder) {
+        // Normales Bild
+        const img = card.querySelector('.reference-image img');
+        if (img) {
             imageContainer.innerHTML = `
-                <div class="lightbox-placeholder">
-                    <div class="placeholder-content">${placeholder.textContent}</div>
-                </div>
+                <img src="${img.src}" alt="${img.alt}" class="lightbox-image" style="max-width: 90vw; max-height: 90vh; object-fit: contain;">
             `;
+        } else {
+            // Platzhalter falls kein Bild vorhanden
+            const placeholder = card.querySelector('.reference-placeholder');
+            if (placeholder) {
+                imageContainer.innerHTML = `
+                    <div class="lightbox-placeholder">
+                        <div class="placeholder-content">${placeholder.textContent}</div>
+                    </div>
+                `;
+            }
         }
     }
     
@@ -374,24 +333,19 @@ function closeLightbox() {
 function openGalleryLightbox(galleryItem) {
     const lightbox = document.getElementById('lightbox');
     const imageContainer = lightbox.querySelector('.lightbox-image-container');
-    const title = lightbox.querySelector('.lightbox-title');
-    const description = lightbox.querySelector('.lightbox-description');
-    const details = lightbox.querySelector('.lightbox-details');
+    const info = lightbox.querySelector('.lightbox-info');
+    
+    // Info-Bereich verstecken für reines Bild
+    if (info) {
+        info.style.display = 'none';
+    }
     
     // Daten aus dem Gallery Item extrahieren
     const img = galleryItem.querySelector('img');
-    const caption = galleryItem.querySelector('.gallery-caption');
-    const captionTitle = caption.querySelector('h4').textContent;
-    const captionDescription = caption.querySelector('p').textContent;
-    
-    // Lightbox-Inhalt befüllen
-    title.textContent = captionTitle;
-    description.textContent = captionDescription;
-    details.innerHTML = '<span>Galerie</span>';
     
     // Bild in Lightbox anzeigen
     imageContainer.innerHTML = `
-        <img src="${img.src}" alt="${img.alt}" class="lightbox-image">
+        <img src="${img.src}" alt="${img.alt}" class="lightbox-image" style="max-width: 90vw; max-height: 90vh; object-fit: contain;">
     `;
     
     // Lightbox anzeigen mit Fade-Animation
