@@ -922,7 +922,7 @@ body.modal-open {
 /* === REFERENZEN GRID === */
 .references-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
 }
@@ -1449,9 +1449,19 @@ body.modal-open {
     
     .hero {
         padding: 80px 0 60px;
-        background-size: 150%;
-        background-position: center 20%;
+        min-height: 75vh;
+        min-height: 75dvh; /* Dynamic viewport height für mobile Browser */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
         background-attachment: scroll;
+    }
+    
+    .hero .container {
+        width: 100%;
     }
     
     .references-grid {
@@ -1474,8 +1484,8 @@ body.modal-open {
 
 @media (max-width: 480px) {
     .hero {
-        background-size: 200%;
-        background-position: center 30%;
+        background-size: cover;
+        background-position: center;
     }
     
     .hero h1 {
@@ -1485,6 +1495,17 @@ body.modal-open {
     .cta-button {
         padding: 14px 24px;
         font-size: 1rem;
+    }
+    
+    /* Referenzkarten für kleine Bildschirme */
+    .references-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .reference-card {
+        max-width: 100%;
     }
     
     .about-features {
