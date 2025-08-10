@@ -48,7 +48,7 @@ html {
 
 /* === HERO BEREICH === */
 .hero {
-    background: linear-gradient(rgba(65, 70, 61, 0.7), rgba(142, 176, 69, 0.5)), url('https://images.unsplash.com/photo-1458245201577-fc8a130b8829?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background: linear-gradient(rgba(65, 70, 61, 0.7), rgba(142, 176, 69, 0.5)), url('../img/rasenmäher.avif');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -626,6 +626,44 @@ body.modal-open {
     resize: vertical;
 }
 
+/* Checkbox Styles */
+.checkbox-group {
+    margin-bottom: 2rem;
+}
+
+.checkbox-label {
+    display: flex !important;
+    align-items: flex-start;
+    cursor: pointer;
+    font-weight: 400 !important;
+    line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto !important;
+    min-width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--secondary-green);
+}
+
+.checkbox-label span {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+}
+
+.checkbox-label a {
+    color: var(--secondary-green);
+    text-decoration: underline;
+}
+
+.checkbox-label a:hover {
+    color: var(--dark-green);
+}
+
 .submit-button {
     background: var(--secondary-green);
     color: var(--primary-white);
@@ -789,22 +827,70 @@ body.modal-open {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--secondary-green);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: center;
 }
 
 .nav a:hover {
     color: var(--secondary-green);
 }
 
+.nav a:hover::after {
+    transform: scaleX(1);
+}
+
+.nav a.active {
+    color: var(--secondary-green);
+}
+
+.nav a.active::after {
+    transform: scaleX(1);
+}
+
+@keyframes slideIn {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
 .back-link {
-    background: var(--secondary-green);
+    background: var(--secondary-green) !important;
     color: var(--primary-white) !important;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.2rem !important;
     border-radius: var(--border-radius);
     font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.3s ease !important;
+}
+
+.back-link::after {
+    display: none !important;
 }
 
 .back-link:hover {
-    background: var(--secondary-green) !important;
+    background: var(--dark-green) !important;
+    color: var(--primary-white) !important;
+}
+
+.back-link:hover::after {
+    display: none !important;
 }
 
 /* === FILTER === */
@@ -1226,6 +1312,103 @@ body.modal-open {
 }
 
 /* === RESPONSIVE === */
+
+/* Tablet Layouts - iPad Air und ähnliche Geräte */
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Services Grid - 2x2 + 1 zentriert */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 700px;
+    }
+    
+    .services-grid .service-card:nth-child(1),
+    .services-grid .service-card:nth-child(2),
+    .services-grid .service-card:nth-child(3),
+    .services-grid .service-card:nth-child(4) {
+        grid-column: auto;
+    }
+    
+    /* 5. Element zentriert */
+    .services-grid .service-card:nth-child(5) {
+        grid-column: 1 / -1;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    /* About Features - 2x2 Layout */
+    .about-features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    /* Gallery Grid - 2 Spalten */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* References Grid - 2 Spalten */
+    .references-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Stats Grid - 2x2 Layout */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem;
+    }
+}
+
+/* iPad Mini Portrait und ähnliche (768px) */
+@media (max-width: 768px) and (min-width: 700px) {
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+    
+    .gallery-item {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Stats Grid - Erzwinge 2x2 Layout für iPad Mini */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem;
+    }
+}
+
+/* Kleinere Tablets und große Phones im Landscape */
+@media (max-width: 699px) and (min-width: 600px) {
+    /* Bei ungerader Anzahl: letztes Element zentriert */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Bei 3 Elementen: letztes Element zentriert in voller Breite */
+    .gallery-item:nth-child(3):last-child {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 0.75rem); /* Gleiche Breite wie die anderen */
+        margin: 0 auto;
+    }
+    
+    /* Für Referenzen-Seite mit mehreren Cards */
+    .reference-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 0.75rem);
+        margin: 0 auto;
+    }
+    
+    /* Stats Grid - Erzwinge 2x2 Layout */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -1266,6 +1449,9 @@ body.modal-open {
     
     .hero {
         padding: 80px 0 60px;
+        background-size: 150%;
+        background-position: center 20%;
+        background-attachment: scroll;
     }
     
     .references-grid {
@@ -1287,6 +1473,11 @@ body.modal-open {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        background-size: 200%;
+        background-position: center 30%;
+    }
+    
     .hero h1 {
         font-size: 2rem;
     }

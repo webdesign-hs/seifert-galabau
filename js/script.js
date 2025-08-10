@@ -31,6 +31,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Active Navigation Highlighting basierend auf Scroll-Position
+function updateActiveNavigation() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+    const header = document.querySelector('.header');
+    const headerHeight = header ? header.offsetHeight : 0;
+    const scrollPosition = window.scrollY + headerHeight + 50; // +50 für bessere Erkennung
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            // Entferne active von allen Links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Füge active zum entsprechenden Link hinzu
+            const activeLink = document.querySelector(`.nav a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    });
+    
+    // Wenn ganz oben, entferne alle active Klassen
+    if (window.scrollY < 100) {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+    }
+}
+
+// Event Listener für Scroll
+window.addEventListener('scroll', updateActiveNavigation);
+window.addEventListener('load', updateActiveNavigation);
+
 // Einfache Formular-Behandlung
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
