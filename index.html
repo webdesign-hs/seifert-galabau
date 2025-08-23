@@ -3,11 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seifert Galabau - Garten- und Landschaftsbau</title>
+    <meta name="robots" content="index, follow">
+    <title>Gartenpflege Kreis Heinsberg +30km | Seifert Galabau</title>
+    <meta name="description" content="Professionelle Gartenpflege im Kreis Heinsberg & Umgebung (30km). Rasenpflege, Heckenschnitt, Bepflanzung. ☎ Jetzt anfragen!">
+    <link rel="canonical" href="https://www.seifert-galabau.de/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Gartenpflege Kreis Heinsberg | Seifert Galabau">
+    <meta property="og:description" content="Ihr Partner für Gartenpflege im Kreis Heinsberg und 30km Umgebung. Professionell, zuverlässig, fair.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.seifert-galabau.de/">
+    <meta property="og:locale" content="de_DE">
     <link rel="stylesheet" href="css/inter-font.css">
     <link rel="stylesheet" href="css/fontawesome-local.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/auth-check.js"></script>
+    
+    <!-- Strukturierte Daten für Local SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "additionalType": "https://schema.org/LawnCare",
+      "name": "Seifert Galabau",
+      "url": "https://www.seifert-galabau.de",
+      "telephone": "+49 2452 123456",
+      "email": "kontakt@seifert-galabau.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{STRASSE_NR}}",
+        "postalCode": "52525",
+        "addressLocality": "Heinsberg",
+        "addressCountry": "DE"
+      },
+      "areaServed": [
+        {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 51.063,
+            "longitude": 6.099
+          },
+          "geoRadius": 30000
+        },
+        {"@type": "City", "name": "Heinsberg"},
+        {"@type": "City", "name": "Geilenkirchen"},
+        {"@type": "City", "name": "Erkelenz"},
+        {"@type": "City", "name": "Wegberg"},
+        {"@type": "City", "name": "Hückelhoven"},
+        {"@type": "City", "name": "Wassenberg"},
+        {"@type": "City", "name": "Übach-Palenberg"},
+        {"@type": "City", "name": "Gangelt"},
+        {"@type": "City", "name": "Selfkant"},
+        {"@type": "City", "name": "Waldfeucht"}
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "13:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Gartenpflege-Leistungen",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gartenpflege & Grünflächenpflege"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Rasenpflege & Rollrasen"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Heckenschnitt & Baumpflege"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bepflanzung & Beetgestaltung"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Garten-Neugestaltung"}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Saisonale Gartenpflege"}}
+        ]
+      }
+    }
+    </script>
 </head>
 <body>
     <!-- HEADER -->
@@ -41,7 +118,7 @@
     <!-- LEISTUNGEN -->
     <section class="section services" id="leistungen">
         <div class="container">
-            <h2 class="section-title">Unsere Leistungen</h2>
+            <h2 class="section-title">Unsere Leistungen im Kreis Heinsberg</h2>
             <p class="section-subtitle">Vom ersten Entwurf bis zur dauerhaften Pflege – wir begleiten Sie bei jedem Schritt zu Ihrem perfekten Garten.</p>
             
             <div class="services-grid">
@@ -56,7 +133,7 @@
                 
                 <div class="service-card" data-service="landschaftsbau">
                     <div class="service-icon"><i class="fas fa-mountain"></i></div>
-                    <h3>Landschaftsbau</h3>
+                    <h3>Garten & Außenbereiche</h3>
                     <p>Terrassen, Wege, Mauern und Wasseranlagen. Hochwertige Materialien und handwerkliche Präzision.</p>
                     <button class="service-more-link" data-service="landschaftsbau">
                         Mehr erfahren <i class="fas fa-arrow-right"></i>
@@ -93,8 +170,13 @@
         </div>
     </section>
 
+    <!-- Logo über Warum-Sektion -->
+    <div style="text-align: center; padding: 3rem 0 1rem;">
+        <img src="img/logo-transparent.png" alt="Seifert Galabau Logo" style="height: 120px; filter: brightness(0) saturate(100%);">
+    </div>
+
     <!-- ÜBER UNS -->
-    <section class="section about" id="ueber-uns">
+    <section class="section about" id="ueber-uns" style="padding-top: 2rem;">
         <div class="container">
             <h2 class="section-title">Warum Seifert Galabau?</h2>
             
@@ -128,6 +210,62 @@
                         <p>Umweltbewusste Materialwahl und naturnahe Gartengestaltung</p>
                     </div>
                 </div>
+                
+                <!-- Rezensionen -->
+                <div class="reviews-section" style="margin-top: 4rem;">
+                    <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 2rem; color: var(--dark-green);">Was unsere Kunden sagen</h3>
+                    <div class="reviews-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                        
+                        <div class="review-card" style="background: var(--primary-white); padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(65, 70, 61, 0.08);">
+                            <div class="review-stars" style="color: #FFD700; margin-bottom: 1rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p style="color: var(--medium-gray); line-height: 1.6; margin-bottom: 1rem; font-style: italic;">"Hervorragende Arbeit! Das Team hat unseren Garten komplett umgestaltet. Sehr professionell und zuverlässig. Kann ich nur weiterempfehlen!"</p>
+                            <div class="review-author" style="font-weight: 600; color: var(--dark-green);">- Familie Schmidt</div>
+                        </div>
+                        
+                        <div class="review-card" style="background: var(--primary-white); padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(65, 70, 61, 0.08);">
+                            <div class="review-stars" style="color: #FFD700; margin-bottom: 1rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p style="color: var(--medium-gray); line-height: 1.6; margin-bottom: 1rem; font-style: italic;">"Schnell, sauber und preislich absolut fair. Die Beratung war top und alle Wünsche wurden berücksichtigt. Vielen Dank!"</p>
+                            <div class="review-author" style="font-weight: 600; color: var(--dark-green);">- Thomas K.</div>
+                        </div>
+                        
+                        <div class="review-card" style="background: var(--primary-white); padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(65, 70, 61, 0.08);">
+                            <div class="review-stars" style="color: #FFD700; margin-bottom: 1rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p style="color: var(--medium-gray); line-height: 1.6; margin-bottom: 1rem; font-style: italic;">"Unser Vorgarten sieht fantastisch aus! Die Jungs arbeiten sehr gewissenhaft und haben ein Auge fürs Detail. Jederzeit wieder!"</p>
+                            <div class="review-author" style="font-weight: 600; color: var(--dark-green);">- Maria L.</div>
+                        </div>
+                        
+                        <div class="review-card" style="background: var(--primary-white); padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(65, 70, 61, 0.08);">
+                            <div class="review-stars" style="color: #FFD700; margin-bottom: 1rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p style="color: var(--medium-gray); line-height: 1.6; margin-bottom: 1rem; font-style: italic;">"Sehr kompetente Beratung und fachgerechte Ausführung. Das Ergebnis übertrifft unsere Erwartungen. Kleiner Tipp: früh buchen, die sind gefragt!"</p>
+                            <div class="review-author" style="font-weight: 600; color: var(--dark-green);">- Ehepaar Weber</div>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
             
         </div>
@@ -141,10 +279,10 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="img/gutebilder/vorgartengestaltung-mit-pflaster-und-kies-un-kleinen-pflanzen-von-physiopraxis.jpg" alt="Moderne Vorgartengestaltung" style="width: 100%; height: 250px; object-fit: cover;" loading="lazy">
+                    <img src="img/gutebilder/vorgartengestaltung.avif" alt="Moderne Vorgartengestaltung" style="width: 100%; height: 250px; object-fit: cover;" loading="lazy">
                     <div class="gallery-caption">
                         <h4>Moderne Vorgartengestaltung</h4>
-                        <p>Pflegeleichter Vorgarten mit Kies, Pflaster und ausgewählten Pflanzen.</p>
+                        <p>Stilvolle Gestaltung mit natürlichen Materialien und harmonischer Bepflanzung.</p>
                     </div>
                 </div>
                 
@@ -181,7 +319,21 @@
             <h2 class="section-title">Kontakt aufnehmen</h2>
             <p class="section-subtitle">Haben Sie Fragen oder möchten Sie ein unverbindliches Angebot? Wir freuen uns auf Ihre Nachricht!</p>
             
-            <form class="contact-form">
+            <form class="contact-form" action="/contact.php" method="POST">
+                <div class="form-group">
+                    <label for="customer-type">Kundentyp *</label>
+                    <select id="customer-type" name="customer-type" required>
+                        <option value="">Bitte wählen...</option>
+                        <option value="privat">Privatkunde</option>
+                        <option value="gewerbe">Gewerbekunde</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="company-name-group" style="display: none;">
+                    <label for="company-name">Firmenname *</label>
+                    <input type="text" id="company-name" name="company-name">
+                </div>
+                
                 <div class="form-group">
                     <label for="name">Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -202,6 +354,15 @@
                     <textarea id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Gartenprojekt oder Ihre Fragen..." required></textarea>
                 </div>
                 
+                <!-- Honeypot (versteckt per CSS) -->
+                <div style="position: absolute; left: -9999px;">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+                </div>
+                
+                <!-- Timestamp -->
+                <input type="hidden" id="ts" name="ts" value="">
+                
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="privacy" name="privacy" required>
@@ -210,6 +371,9 @@
                 </div>
                 
                 <button type="submit" class="submit-button">Nachricht senden</button>
+                
+                <!-- Status-Meldung -->
+                <div id="form-note" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none;"></div>
             </form>
         </div>
     </section>
@@ -219,7 +383,7 @@
     <div class="modal" id="modal-gartenplanung">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="img/gutebilder/beet-mit-mulch-und-baum.jpg" alt="Gartenplanung & Design" class="modal-image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;">
+                <img src="img/gutebilder/galabau.avif" alt="Gartenplanung & Design" class="modal-image" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px 8px 0 0;">
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
@@ -247,22 +411,22 @@
     <div class="modal" id="modal-landschaftsbau">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="img/gutebilder/nachher-terrasse4.jpg" alt="Landschaftsbau" class="modal-image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;">
+                <img src="img/gutebilder/nachher-terrasse4.jpg" alt="Landschaftsbau" class="modal-image" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px 8px 0 0;">
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
-                <h2 class="modal-title">Landschaftsbau</h2>
+                <h2 class="modal-title">Garten & Außenbereiche</h2>
                 <p class="modal-description">
-                    Mit handwerklicher Präzision und modernen Techniken verwandeln wir Pläne in beeindruckende Gartenlandschaften. Von eleganten Terrassen über natürliche Wasserspiele bis hin zu funktionalen Wegführungen – wir setzen Ihre Gartenträume professionell um und schaffen dabei harmonische Verbindungen zwischen Haus und Garten.
+                    Mit viel Sorgfalt und Kreativität gestalten wir Außenbereiche, die zu dir passen. Dabei setzen wir auf pflegeleichte und stilvolle Lösungen, die deinen Garten in Szene setzen – von gemütlichen Sitzplätzen bis hin zu dekorativen Gestaltungselementen.
                 </p>
                 <ul class="modal-features">
-                    <li>Terrassenbau mit Naturstein, Holz oder modernen Materialien</li>
-                    <li>Wegebau und Pflasterarbeiten</li>
-                    <li>Mauern, Gabionen und Sichtschutzlösungen</li>
-                    <li>Wasseranlagen: Teiche, Brunnen und Bachlauf</li>
-                    <li>Erdarbeiten und Geländemodellierung</li>
-                    <li>Drainage- und Entwässerungssysteme</li>
-                    <li>Beleuchtungskonzepte für den Außenbereich</li>
+                    <li>Pflege und Gestaltung von Beeten, Sträuchern und Rasenflächen</li>
+                    <li>Anlegen von Hochbeeten und Pflanzbereichen</li>
+                    <li>Aufstellen dekorativer Elemente wie Gabionen, Pflanzkübel oder Naturstein-Dekoration</li>
+                    <li>Setzen von Sichtschutzelementen und dekorativen Gartenabtrennungen (z. B. Holzelemente oder Fertigsysteme)</li>
+                    <li>Gestaltung mit Kies, Holz oder Naturstein als Zierelement</li>
+                    <li>Kleine Wasser- und Dekoelemente (z. B. Mini-Teiche, Zierbrunnen, Wasserschalen)</li>
+                    <li>Pflege bestehender Gartenanlagen</li>
                 </ul>
                 <div class="modal-cta">
                     <a href="#kontakt" class="cta-button">Kostenvoranschlag anfragen</a>
@@ -275,7 +439,7 @@
     <div class="modal" id="modal-bepflanzung">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="img/gutebilder/rollrasen2.jpg" alt="Bepflanzung & Rasen" class="modal-image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;">
+                <img src="img/gutebilder/rollrasen2.jpg" alt="Bepflanzung & Rasen" class="modal-image" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px 8px 0 0;">
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
@@ -303,7 +467,7 @@
     <div class="modal" id="modal-gartenpflege">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="img/gutebilder/gepflegter-rasen-mit-geplfegter-hecke.jpg" alt="Gartenpflege" class="modal-image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;">
+                <img src="img/gutebilder/gepflegter-rasen-mit-geplfegter-hecke.jpg" alt="Gartenpflege" class="modal-image" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px 8px 0 0;">
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
@@ -331,7 +495,7 @@
     <div class="modal" id="modal-baumpflege">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="img/gutebilder/baum-kurzschnitt.jpg" alt="Baumpflege" class="modal-image" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;">
+                <img src="img/referenzen/IMG-20250319-WA0013.jpg" alt="Baumpflege" class="modal-image" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px 8px 0 0;">
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
@@ -381,6 +545,7 @@
                     <a href="impressum.html">Impressum</a>
                     <a href="datenschutz.html">Datenschutz</a>
                     <a href="#kontakt">Kontakt</a>
+                    <a href="#leistungen">Leistungen</a>
                 </div>
             </div>
             <p>&copy; 2025 Seifert Galabau. Alle Rechte vorbehalten.</p>
@@ -388,5 +553,85 @@
     </footer>
 
     <script src="js/script.js"></script>
+    
+    <!-- Kontaktformular JavaScript -->
+    <script>
+    (function() {
+        // Timestamp beim Laden setzen
+        document.getElementById('ts').value = Date.now();
+        
+        // Firmenname-Feld ein/ausblenden
+        const customerType = document.getElementById('customer-type');
+        const companyGroup = document.getElementById('company-name-group');
+        const companyInput = document.getElementById('company-name');
+        
+        customerType.addEventListener('change', function() {
+            if (this.value === 'gewerbe') {
+                companyGroup.style.display = 'block';
+                companyInput.setAttribute('required', 'required');
+            } else {
+                companyGroup.style.display = 'none';
+                companyInput.removeAttribute('required');
+                companyInput.value = '';
+            }
+        });
+        
+        // Formular-Handler
+        const form = document.querySelector('.contact-form');
+        const note = document.getElementById('form-note');
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Status anzeigen
+            note.style.display = 'block';
+            note.style.backgroundColor = '#f0f4f8';
+            note.style.color = '#41463d';
+            note.textContent = 'Nachricht wird gesendet...';
+            
+            try {
+                const response = await fetch('/contact.php', {
+                    method: 'POST',
+                    body: new FormData(form)
+                });
+                
+                const data = await response.json();
+                
+                if (data.ok) {
+                    note.style.backgroundColor = '#d4edda';
+                    note.style.color = '#155724';
+                    note.textContent = 'Vielen Dank! Ihre Nachricht wurde erfolgreich versendet.';
+                    form.reset();
+                    document.getElementById('ts').value = Date.now();
+                } else {
+                    note.style.backgroundColor = '#f8d7da';
+                    note.style.color = '#721c24';
+                    note.textContent = data.error || 'Bitte überprüfen Sie Ihre Eingaben.';
+                    
+                    // Feldspezifische Fehler anzeigen (optional)
+                    if (data.fields) {
+                        for (let field in data.fields) {
+                            const input = form.querySelector(`[name="${field}"]`);
+                            if (input) {
+                                input.style.borderColor = '#dc3545';
+                            }
+                        }
+                    }
+                }
+            } catch (error) {
+                note.style.backgroundColor = '#f8d7da';
+                note.style.color = '#721c24';
+                note.textContent = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.';
+            }
+        });
+        
+        // Fehler-Styling bei Eingabe zurücksetzen
+        form.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('input', function() {
+                this.style.borderColor = '';
+            });
+        });
+    })();
+    </script>
 </body>
 </html>

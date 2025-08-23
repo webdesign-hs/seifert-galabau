@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /js/
+Disallow: /login.html
+Disallow: *.pdf$
+
+# Sitemap-Verweis
+Sitemap: https://www.seifert-galabau.de/sitemap.xml
+
+# Crawl-Delay für respektvolles Crawling
+Crawl-delay: 1
